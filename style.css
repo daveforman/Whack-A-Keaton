@@ -1,0 +1,68 @@
+body {
+    display: grid;
+    grid-template-rows: 10vh 75vh 15vh;
+    grid-template-columns: 20vw 60vw 20vw;
+    background-size: 100vw;
+    background-image: url("images/background-image.jpg");
+    background-repeat: none;
+}
+
+header {
+    font-size: 5vh;
+    grid-row: 1;
+    grid-column: 1/4;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.452);
+    font-family: 'Bowlby One SC', cursive;
+}
+
+#gameArea {
+    margin-top: 4vh;
+    display: flex;
+    flex-wrap: wrap;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    background-color: #6E4839;
+   
+}
+
+.tile {
+    width: 12vw;
+    height: 12vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    justify-content: space-around;
+    background-size: 100%;
+    background-image: url("images/mudmound.png");
+    padding: 10px;
+}
+
+.mole {
+    width: 12vw;
+    height: 12vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    justify-content: space-around;
+    background-size: 100%;
+    background-image: url("images/keatonface1.png");
+    padding: 10px;
+}
+
+.keatonSad {
+    width: 12vw;
+    height: 12vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    justify-content: space-around;
+    background-size: 100%;
+    background-image: url("images/keatonface2.png");
+    padding: 10px;
+}
+
