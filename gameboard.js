@@ -56,8 +56,7 @@ class Gameboard {
     }
     
     moleClickHandler(){
-      debugger;
-      if ($(this).hasClass('mole')){
+        if ($(this).hasClass('mole')){
         $(this).removeClass('mole').addClass('keatonSad');
         this.hits++;
       } else {
@@ -83,7 +82,7 @@ class Gameboard {
 
     endGame(){
       clearInterval(this.moleInterval);
-      this.tile.removeClass(this.mole_Class);
+      // this.tile.removeClass('mole');
       alert(` Game Over. Score: ${this.hits} `);
     }
 }
