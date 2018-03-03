@@ -13,11 +13,12 @@ function applyClickHandlers(){
 
 class Gameboard {
     constructor(name) {
-        this.hits = 0;
-        this.misses = 0;
-        this.total = 0;
+        var hits = this.hits = 0;
+        var misses = this.misses = 0;
+        var total = this.total = 0;
         this.gameBoardSelecter = $('#gameArea');
         this.tile_Selector = $("div > .tile").length-1;
+        this.tile = $("div > .tile");
         this.mole_Class = 'mole';
 
         this.gameBoard = this.gameBoardSelecter;
@@ -27,8 +28,8 @@ class Gameboard {
         this.turnTime = 1000;
 
         this.moleInterval;
-        this.moleLifeMin = 1000;
-        this.moleLifeMax = 3 * 1000;
+        this.moleLifeMin = 300;
+        this.moleLifeMax = 1000;
 
         this.getRandomIntInclusive = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,6 +38,7 @@ class Gameboard {
     //updates hit stats
     //updates hit display
     successfulHit(){
+      console.log('hello');
       this.hits++;
       $("hit").text(this.hits).addClass('hitText'); //or add class "hits"/show 2nd img
     
@@ -54,20 +56,22 @@ class Gameboard {
     }
     
     moleClickHandler(){
-      if(this.hasClass('mole')){
-        successfulHit();
+      debugger;
+      if ($(this).hasClass('mole')){
+        $(this).removeClass('mole').addClass('keatonSad');
+        this.hits++;
       } else {
-        wrongHole();
+        this.misses++;
       }
-      updateTotalTries();
+      this.total++;
     }
 
     spawnMole(){
-      let targetTile = $(this.gameBoard[this.getRandomIntInclusive(0,this.tile_Selector)]);
+      let targetTile = $(this.tile[this.getRandomIntInclusive(0,this.tile_Selector)]);
       let timeToLive = this.getRandomIntInclusive(this.moleLifeMin, this.moleLifeMax);
       targetTile.addClass(this.mole_Class);
       setTimeout(function(){
-        targetTile.removeClass(this.mole_Class);
+        targetTile.removeClass('mole');
       }, timeToLive);
     }
 
@@ -79,7 +83,7 @@ class Gameboard {
 
     endGame(){
       clearInterval(this.moleInterval);
-      this.gameTiles.removeClass(this.mole_Class);
+      this.tile.removeClass(this.mole_Class);
       alert(` Game Over. Score: ${this.hits} `);
     }
 }
