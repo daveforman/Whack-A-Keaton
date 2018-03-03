@@ -83,7 +83,6 @@ class Gameboard {
 
     endGame(){
       clearInterval(this.moleInterval);
-      this.tile.removeClass(this.mole_Class);
       alert(` Game Over. Score: ${this.hits} `);
     }
 }
